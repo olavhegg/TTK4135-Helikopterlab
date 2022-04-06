@@ -56,7 +56,7 @@ Q1(1,1) = 1;                            % Weight on state x1
 Q1(2,2) = 0;                            % Weight on state x2
 Q1(3,3) = 0;                            % Weight on state x3
 Q1(4,4) = 0;                            % Weight on state x4
-P1 = 10;                                % Weight on input
+P1 = 0.1;                                % Weight on input
 Q = gen_q(Q1, P1, N, M);                                  % Generate Q, hint: gen_q
 c = zeros(5*N, 1);                                  % Generate c, this is the linear constant term in the QP
 
@@ -106,28 +106,15 @@ subplot(511)
 stairs(t,u),grid
 ylabel('u')
 subplot(512)
-hold on;
-plot(data(1, :), data(3, :)+pi)
+plot(data(1, :), data(3, :))
 plot(t,x1,'m',t,x1,'mo'),grid
-legend("Measured travel", "Modelled travel");
 ylabel('lambda')
 subplot(513)
-hold on;
-plot(data(1, :), data(4, :))
 plot(t,x2,'m',t,x2','mo'),grid
-legend("Measured travel rate", "Modelled travel rate");
 ylabel('r')
 subplot(514)
-hold on;
-plot(data(1, :), data(5, :))
 plot(t,x3,'m',t,x3,'mo'),grid
-legend("Measured pitch", "Modelled pitch");
 ylabel('p')
 subplot(515)
-hold on;
-plot(data(1, :), data(6, :))
 plot(t,x4,'m',t,x4','mo'),grid
-legend("Measured pitch rate", "Modelled pitch rate");
 xlabel('time (s)'),ylabel('pdot')
-
-sgtitle("Results with q = 10");
