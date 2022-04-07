@@ -104,30 +104,30 @@ figure(2)
 hold on;
 subplot(511)
 stairs(t,u),grid
-ylabel('u')
+ylabel('u [rad]')
 subplot(512)
 hold on;
 plot(data(1, :), data(3, :)+pi)
 plot(t,x1,'m',t,x1,'mo'),grid
 legend("Measured travel", "Modelled travel");
-ylabel('lambda')
+ylabel('lambda [rad]')
 subplot(513)
 hold on;
 plot(data(1, :), data(4, :))
 plot(t,x2,'m',t,x2','mo'),grid
 legend("Measured travel rate", "Modelled travel rate");
-ylabel('r')
+ylabel('r [rad/s]')
 subplot(514)
 hold on;
 plot(data(1, :), data(5, :))
 plot(t,x3,'m',t,x3,'mo'),grid
 legend("Measured pitch", "Modelled pitch");
-ylabel('p')
+ylabel('p [rad]')
 subplot(515)
 hold on;
 plot(data(1, :), data(6, :))
 plot(t,x4,'m',t,x4','mo'),grid
 legend("Measured pitch rate", "Modelled pitch rate");
-xlabel('time (s)'),ylabel('pdot')
+xlabel('time (s)'),ylabel('pdot [rad/s]')
 
 sgtitle("Results with q = 10");

@@ -66,12 +66,12 @@ beq = [A1*x0; zeros(4*(N-1), 1)];% Generate b
 
 %% Day 3, feedback control
 
-Q_lqr = [2 0 0 0;
+Q_lqr = [100 0 0 0;
     0 1 0 0;
     0 0 1 0;
     0 0 0 1];
 
-R_lqr = 0.1;
+R_lqr = 1;
 
 K_lqr = dlqr(A1, B1, Q_lqr, R_lqr);
 
@@ -116,17 +116,34 @@ t = 0:delta_t:delta_t*(length(u)-1);
 
 figure(2)
 subplot(511)
+hold on;
+plot(data(1, :), data(13, :)); 
 stairs(t,u),grid
-ylabel('u')
+ylabel('u [rad]')
+legend("u", "u*");
 subplot(512)
+hold on;
+plot(data(1, :), data(7,:)+pi); 
 plot(t,x1,'m',t,x1,'mo'),grid
-ylabel('lambda')
+ylabel('lambda [rad]')
+legend("lambda", "lambda*");
 subplot(513)
+hold on;
+plot(data(1, :), data(8, :)); 
 plot(t,x2,'m',t,x2','mo'),grid
-ylabel('r')
+ylabel('r [rad/s]')
+legend("r", "r*");
 subplot(514)
+hold on;
+plot(data(1, :), data(9, :)); 
 plot(t,x3,'m',t,x3,'mo'),grid
-ylabel('p')
+ylabel('p [rad]')
+legend("p", "p*");
 subplot(515)
+hold on;
+plot(data(1, :), data(10, :)); 
 plot(t,x4,'m',t,x4','mo'),grid
-xlabel('tid (s)'),ylabel('pdot')
+xlabel('time [s]'),ylabel('pdot [rad/s]')
+legend("pdot", "pdot*");
+
+sgtitle("Results with tuning 3")
